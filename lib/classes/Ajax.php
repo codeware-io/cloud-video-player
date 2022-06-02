@@ -1,6 +1,6 @@
 <?php 
 
-namespace SUP;
+namespace CVP;
 
 class Ajax{
 	public static function init() {

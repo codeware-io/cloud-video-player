@@ -1,6 +1,6 @@
 <?php 
 
-namespace SUP;
+namespace CVP;
 
 class Enqueue{
 	public static function init(){

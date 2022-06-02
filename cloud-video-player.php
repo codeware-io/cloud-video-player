@@ -14,13 +14,11 @@
  * @package         CODEWARE
  */
 
-use SUP\Plugin;
+use CVP\Plugin;
 
 // defined required constants
-define( 'SUP_URL', plugins_url( '', __FILE__ ) );
-define( 'SUP_VERSION', '1.0.0');
-
-require_once __DIR__ . '/lib/classes/functions.php';
+define( 'CVP_URL', plugins_url( '', __FILE__ ) );
+define( 'CVP_VERSION', '1.0.0');
 
 require_once __DIR__ . '/vendor/autoload.php';
 

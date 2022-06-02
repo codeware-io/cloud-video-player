@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'SUP\\' => array($baseDir . '/lib/classes'),
+    'CVP\\' => array($baseDir . '/lib/classes'),
 );
