@@ -5,6 +5,32 @@ use CVP\Shortcode;
 
 class AWS {
 
+	public static function init(){
+		$private_key_filename = '/home/test/secure/example-priv-key.pem';
+		$key_pair_id = 'K2JCJMDEHXQW5F';
+		
+		$video_path = 'https://www.youtube.com/watch?v=ScX-wXBaCPE';
+		
+		$expires = time() + 300; // 5 min from now
+		
+		$client_ip = $_SERVER['REMOTE_ADDR'];
+		$policy =
+		'{'.
+			'"Statement":['.
+				'{'.
+					'"Resource":"'. $video_path . '",'.
+					'"Condition":{'.
+						'"IpAddress":{"AWS:SourceIp":"' . $client_ip . '/32"},'.
+						'"DateLessThan":{"AWS:EpochTime":' . $expires . '}'.
+					'}'.
+				'}'.
+			']' .
+			'}';
+	    
+		self::get_custom_policy_stream_name($video_path, $private_key_filename, $key_pair_id, $policy);
+	}
+	
+
     public static function rsa_sha1_sign($policy, $private_key_filename) {
 		$signature = "";
 
@@ -58,7 +84,9 @@ class AWS {
 			array('%3F', '%3D', '%26'),
 			$stream_name);
          
-		Shortcode::html($signed_url);
+			echo'<video width="320" height="240" controls autoplay>
+					<source src="'.$signed_url.'" type="video/mp4">
+				</video>';
 	}
 
 	public static function get_custom_policy_stream_name($video_path, $private_key_filename, $key_pair_id, $policy) {
@@ -74,6 +102,5 @@ class AWS {
 		// URL-encode the query string characters to support Flash Player
 		return self::encode_query_params($stream_name);
 	}
-
 
 }

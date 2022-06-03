@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 namespace CVP;
 // add helper functions here
 // call from other files like this PLUGIN_NAMESPACE/function_name()
