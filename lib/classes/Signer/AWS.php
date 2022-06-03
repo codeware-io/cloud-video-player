@@ -5,11 +5,11 @@ use CVP\Shortcode;
 
 class AWS {
 
-	public static function init(){
+	public static function init($src){
 		$private_key_filename = '/home/test/secure/example-priv-key.pem';
 		$key_pair_id = 'K2JCJMDEHXQW5F';
 		
-		$video_path = 'https://www.youtube.com/watch?v=ScX-wXBaCPE';
+		$video_path = $src;
 		
 		$expires = time() + 300; // 5 min from now
 		
